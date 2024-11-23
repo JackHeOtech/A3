@@ -20,17 +20,38 @@ router.get('/create', (req,res) => { //Route to the create.ejs file
 
 });
 
-router.post('/create', async (req, res) => {
-    const {title, description} = req.body; //req.body allows website to access data sent by the user (eg. forms)
+router.post('/create', async (req, res) => { //.post is used to send updates while .get retrieves data for viewing
+    const {title, description} = req.body; //req.body allows website to access data sent by the user (eg. forms being created)
     try{
         const newPlan = new Plan({workout, duration, date});
         await newWorkout.save();
-        res.redirect('/plans')
+        res.redirect('/plans');
 
     } catch (error){
-        res.status(500).send("Error: Could not create plan")
+        res.status(500).send("Error: Could not create plan");
     }
 });
 
 
-router.get('/update/:id') //:id targets the specific thing you want to update
+
+router.get('/update/:id', async (req, res) =>{ //Retrieves the survey first
+    try{
+        const plans = await Plans.findById(req.params.id);
+        res.render('plans/update', {title: 'Edit Plan', plans});
+    }catch (error){
+        res.status(500).send("Error: Plan was not retrieved");
+    }
+});
+
+router.post('/update/:id', async (req, res) => { //:id targets the specific thing you want to update
+    const {title, description} = req.body;
+    try{
+        await Plans.findByIdAndUpdate(req.params.id, {title, description});
+        res.redirect('/plans');
+    } catch (error){
+        res.status(500).send("Error: Could not edit plan");
+    }
+}); 
+
+
+
