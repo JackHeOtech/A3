@@ -53,5 +53,14 @@ router.post('/update/:id', async (req, res) => { //:id targets the specific thin
     }
 }); 
 
+router.post('/delete/:id', async (req, res) =>{
+    try {
+        await Plans.findByIdAndDelete(req.params.id);
+        res.redirect('/plans');
+    } catch (error){
+        res.status(500).send('Error: Could not delete plan');
+    }
+})
 
+module.exports = router;
 
