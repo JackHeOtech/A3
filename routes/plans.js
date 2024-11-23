@@ -6,10 +6,10 @@ router.get('/', (req,res) => {
     res.render('index', {title: 'Workout Tracker'});
 });
 
-router.get('/lists', async (req,res) => {
+router.get('/logs', async (req,res) => {
     try {
         const plans = await Plans.find(); //Searches in the Surveys mongoose database for the created plans
-        res.render('plans/list', {title: 'List of plans', plans}); //view for all the workout plans
+        res.render('plans/logs', {title: 'List of plans', plans}); //view for all the workout plans
     } catch(error){
         res.status(500).send("Error: Couldn't find plan") //Error handler for any errors that occur
     }
