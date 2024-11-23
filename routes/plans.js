@@ -53,7 +53,7 @@ router.post('/update/:id', async (req, res) => { //:id targets the specific thin
     }
 }); 
 
-router.post('/delete/:id', async (req, res) =>{
+router.post('/delete/:id', async (req, res) =>{ //Doesn't need a ejs file since it is handled by a button in an already existing view (logs)
     try {
         await Plans.findByIdAndDelete(req.params.id);
         res.redirect('/plans');
