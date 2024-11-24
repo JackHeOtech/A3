@@ -5,6 +5,8 @@ View Create Update and Delete functionality will be implemented and the Update s
 I wanted my site to look like those workout trackers you can write on, sort of like a reading log: 
 https://www.pinterest.com/pin/760686193290014437/ this is the inspiration photo I used but instead I did a vertical orientation for each created log
 
+As for the style.css file I have decided to create my own
+
 References:
 1. https://www.codementor.io/@parthibakumarmurugesan/what-is-env-how-to-set-up-and-run-a-env-file-in-node-1pnyxw9yxj
 2. https://mongoosejs.com/docs/guide.html
