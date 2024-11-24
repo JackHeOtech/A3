@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Plans = require('../models/plans'); //This is required for the mongoose database
 
+
 router.get('/', (req,res) => {
     res.render('index', {title: 'Workout Tracker'});
 });
@@ -21,11 +22,11 @@ router.get('/create', (req,res) => { //Route to the create.ejs file
 });
 
 router.post('/create', async (req, res) => { //.post is used to send updates while .get retrieves data for viewing
-    const {title, description} = req.body; //req.body allows website to access data sent by the user (eg. forms being created)
+    const {workout, duration, date} = req.body; //req.body allows website to access data sent by the user (eg. forms being created)
     try{
-        const newPlan = new Plan({workout, duration, date});
-        await newWorkout.save();
-        res.redirect('/plans');
+        const newPlan = new Plans({workout, duration, date});
+        await newPlan.save();
+        res.redirect('/plans/logs');
 
     } catch (error){
         res.status(500).send("Error: Could not create plan");
@@ -44,10 +45,10 @@ router.get('/update/:id', async (req, res) =>{ //Retrieves the survey first
 });
 
 router.post('/update/:id', async (req, res) => { //:id targets the specific thing you want to update
-    const {title, description} = req.body;
+    const {workout, duration, date} = req.body;
     try{
-        await Plans.findByIdAndUpdate(req.params.id, {title, description});
-        res.redirect('/plans');
+        await Plans.findByIdAndUpdate(req.params.id, {workout, duration, date});
+        res.redirect('/plans/logs');
     } catch (error){
         res.status(500).send("Error: Could not edit plan");
     }

@@ -6,14 +6,16 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var plansRouter = require('/routes/plans');
-
+var plansRouter = require('./routes/plans');
+var expressLayouts = require('express-ejs-layouts');
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(expressLayouts);
+app.set('view engine', 'ejs'); //uses layout.ejs
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -40,4 +42,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+const mongoose = require('./config/db');
 module.exports = app;

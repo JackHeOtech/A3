@@ -1,12 +1,12 @@
 <!--Use a form to edit -->
 
 <h1>Edit log</h1> <!--The create.ejs code can be reused here -->
-<form action="/plans/edit/<%= plan.id %>" method="POST">
-    <label for="title">Workout:</label>
-    <input type="text" id="title" name="title" required>
+<form action="/plans/update/<%= plan.id %>" method="POST">
+    <label for="workout">Workout:</label>
+    <input type="text" id="workout" name="workout" value="<% plans.workout %>" required>
 
     <label for="duration">Duration:</label>
-    <select name="duration" id="duration"> <!--The select function allows me to create pre determined time periods-->
+    <select name="duration" name="duration" value="<%= plans.duration %>" required > <!--The select function allows me to create pre determined time periods-->
     <option value="30 minutes">30 Minutes</option>
     <option value="45 minutes">45 Minutes</option>
     <option value="60 minutes">60 Minutes</option>
@@ -14,7 +14,7 @@
     </select>
 
     <label for="dayOfCompletion">Date:</label>
-    <input type="date" name="dayOfCompletion" id="dayOfCompletion" required>
+    <input type="date" name="date" value="<%= plans.date %>" required>
 </form>
 
 <button type="submit">Update this log</button>

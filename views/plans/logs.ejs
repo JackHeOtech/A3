@@ -1,13 +1,15 @@
 <h1>Created Logs</h1>
 <ul> <!--Put each log into a list with for loop and Call on the variables defined when creating the plan  -->
-
+<!-- Plan._id is added automatically by mongodb which searches for id -->
     <% plans.forEach(function(plan) { %> 
     <li> 
         <h2><%= plan.title %> </h2>
         <h2><%= plan.duration %></h2>
         <h2><%= plan.dayOfCompletion %></h2>
-        <a href="/plans/<%=plan.title + ' - ' + plan.duration + ' - ' + plan.dayOfCompletion %>">View plan </a>
-        <a href="/plans/update/<%=plan.title + ' - ' + plan.duration + ' - ' + plan.dayOfCompletion %>">Edit plan </a>
+        <a href="/plans/<%=plan._id %>">View plan </a>
+        <a href="/plans/update/<%=plan._id%>">Edit plan </a> 
+        <form action="/plans/delete/<%= plan._id %>" method="POST">
+        <button type="submit">Delete plan </button>
     </li>
     <%}); %> 
 
