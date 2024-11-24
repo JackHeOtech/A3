@@ -22,9 +22,9 @@ router.get('/create', (req,res) => { //Route to the create.ejs file
 });
 
 router.post('/create', async (req, res) => { //.post is used to send updates while .get retrieves data for viewing
-    const {workout, duration, date} = req.body; //req.body allows website to access data sent by the user (eg. forms being created)
+    const {workout, duration, dayOfCompletion} = req.body; //req.body allows website to access data sent by the user (eg. forms being created) Make sure names are correct
     try{
-        const newPlan = new Plans({workout, duration, dayOfCompletion: new Date(dayOfCompletion)}); //Ensures duration stays as number and dayOfCompletion stays the same format
+        const newPlan = new Plans({workout, duration, dayOfCompletion}); //Ensures duration stays as number and dayOfCompletion stays the same format
 
         await newPlan.save();
         res.redirect('/plans/logs');

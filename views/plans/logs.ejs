@@ -3,8 +3,8 @@
 <!-- Plan._id is added automatically by mongodb which searches for id -->
     <% plans.forEach(function(plan) { %> 
     <li> 
-        <h2><%= plan.title %> </h2>
-        <h2><%= plan.duration %></h2>
+        <h2><%= plan.workout %> </h2>
+        <h2><%= plan.duration %> Minutes</h2>
         <h2><%= plan.dayOfCompletion %></h2>
         <a href="/plans/<%=plan._id %>">View plan </a>
         <a href="/plans/update/<%=plan._id%>">Edit plan </a> 
