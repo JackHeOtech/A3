@@ -1,9 +1,9 @@
 <!--Use a form to edit -->
 
 <h1>Edit log</h1> <!--The create.ejs code can be reused here -->
-<form action="/plans/update/<%= plan.id %>" method="POST">
+<form action="/plans/update/<%= plans.id %>" method="POST">
     <label for="workout">Workout:</label>
-    <input type="text" id="workout" name="workout" value="<% plans.workout %>" required>
+    <input type="text" id="workout" name="workout" value="<% plans.workout %>" required> <!--use plans.workout because it needs to fill with the previous input -->
 
     <label for="duration">Duration:</label>
     <select name="duration" name="duration" value="<%= plans.duration %>" required > <!--The select function allows me to create pre determined time periods-->
