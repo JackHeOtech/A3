@@ -14,8 +14,9 @@
     </select>
 
     <label for="dayOfCompletion">Date:</label>
-    <input type="date" name="date" value="<%= plan.date %>" required>
+    <input type="date" name="date" value="<%= plan.dayOfCompletion %>" required> <!--personal note: date to datOfCompletion (consistency) -->
+    <button type="submit">Update this log</button>
 </form>
 
-<button type="submit">Update this log</button>
+
 <a href="/plans">Back to logs</a>

@@ -38,17 +38,17 @@ router.post('/create', async (req, res) => { //.post is used to send updates whi
 
 router.get('/update/:id', async (req, res) =>{ //Retrieves the survey first
     try{
-        const plans = await Plans.findById(req.params.id);
-        res.render('plans/update', {title: 'Edit Plan', plans});
+        const plan = await Plans.findById(req.params.id);
+        res.render('plans/update', {title: 'Edit Plan', plan});
     }catch (error){
         res.status(500).send("Error: Plan was not retrieved");
     }
 });
 
 router.post('/update/:id', async (req, res) => { //:id targets the specific thing you want to update
-    const {workout, duration, date} = req.body;
+    const {workout, duration, dayOfCompletion} = req.body;
     try{
-        await Plans.findByIdAndUpdate(req.params.id, {workout, duration, date});
+        await Plans.findByIdAndUpdate(req.params.id, {workout, duration, dayOfCompletion});
         res.redirect('/plans/logs');
     } catch (error){
         res.status(500).send("Error: Could not edit plan");
